@@ -1,15 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Define light theme (default) */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000; /* black text */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Removed dark mode override for permanent light theme */
 
+/* Body and layout styles */
 html,
 body {
   max-width: 100vw;
@@ -24,19 +25,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Reset */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+/* Anchor tags */
 a {
   color: inherit;
   text-decoration: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
 }
