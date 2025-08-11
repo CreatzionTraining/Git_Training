@@ -1,15 +1,19 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import UploadForm from "./_components/UploadForm";
 
 function Upload() {
+  const [isUploaded, setIsUploaded] = useState(false);
+
   return (
     <div className="p-5 px-8 md:px-28">
-      <h2 className="text-[20px] text-center m-5">
-        Start <strong className="text-primary">Bhuvan</strong> File and{" "}
-        <strong className="text-primary">Share</strong> it
-      </h2>
-      <UploadForm />
+      
+
+      <UploadForm
+        isUploaded={isUploaded}
+        onUploadComplete={() => setIsUploaded(true)}
+        onGoBack={() => setIsUploaded(false)} // reset to start view
+      />
     </div>
   );
 }

@@ -8,12 +8,12 @@ function TopHeader({ onToggleSidebar, isSidebarOpen }) {
   return (
     <div
       className="
-        relative flex items-center px-4 h-[100px]
-        border-b md:border-b-0 border-gray-200 bg-white
+        relative flex items-center justify-between px-4 h-[80px]
+        border-b border-gray-200 bg-white
       "
     >
       {/* Toggle Button (mobile only) */}
-      <div className="md:hidden">
+      <div className="md:hidden flex items-center">
         {isSidebarOpen ? (
           <X
             onClick={onToggleSidebar}
@@ -27,21 +27,24 @@ function TopHeader({ onToggleSidebar, isSidebarOpen }) {
         )}
       </div>
 
-      {/* Centered logo (mobile only) */}
-      {!isSidebarOpen && (
-        <div className="absolute left-1/2 transform -translate-x-1/2 md:static md:transform-none">
+      {/* Mobile-only logo with placeholder to avoid jump */}
+      <div className="flex-1 flex justify-center md:hidden">
+        {!isSidebarOpen ? (
           <Image
             src="/logo3.png"
             alt="Logo"
-            width={150}
+            width={140}
             height={50}
-            className="md:hidden block"
+            className="block object-contain"
+            priority
           />
-        </div>
-      )}
+        ) : (
+          <div className="w-[140px] h-[50px]" /> // placeholder
+        )}
+      </div>
 
-      {/* Right: User button always aligned to right */}
-      <div className="ml-auto">
+      {/* Right: User button */}
+      <div className="ml-auto flex items-center">
         <UserButton />
       </div>
     </div>
